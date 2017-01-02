@@ -1,0 +1,22 @@
+.btn {
+  height: 300px;
+  width: 300px;
+  margin: 2px;
+}
+
+.btn-success:hover {
+  background-color: #449d44 !important;
+}
+
+.flicker {
+  animation: flicker 0.5s linear;
+}
+
+@keyframes flicker {
+  0%, 30%, 85.999%,100% {
+    opacity:0.99;
+  }
+  32%{
+    opacity:0.4;
+  }
+}
