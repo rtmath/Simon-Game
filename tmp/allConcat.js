@@ -17,19 +17,9 @@ function loop(arr, take, period) {
     }, period);
 }
 
-$(document).ready(function(){
-
-  //color values
-  const GREEN = 0;
-  const RED = 1;
-  const YELLOW = 2;
-  const BLUE = 3;
-
-  var newGame = new Game(10);
-  var newPlayer = new Player();
-
-  loop(newGame.currentArray, function(index,elem){
-    switch (newGame.currentArray[index]) {
+function newSequence(currentArray){
+  loop(currentArray, function(index,elem){
+    switch (currentArray[index]) {
       case 0:
         flicker("green");
         break;
@@ -46,36 +36,48 @@ $(document).ready(function(){
         console.log("Error");
         break;
     }
-    $('#output').append(newGame.turnsArray[index],'<br>');
+    $('#output').append(currentArray[index],'<br>');
   });
+  $('#output').append("-------------",'<br>');
+}
 
-  $('#green').click(function(event) {
+$(document).ready(function(){
+
+  //color values
+  const GREEN = 0;
+  const RED = 1;
+  const YELLOW = 2;
+  const BLUE = 3;
+
+  var newGame = new Game(10);
+  var newPlayer = new Player();
+  var userInputs = 0;
+  var gameover = false;
+
+  newSequence(newGame.currentArray);
+
+  $('.btn').click(function(event) {
     event.preventDefault();
-    flicker("green");
-    newPlayer.input(GREEN);
-    newGame.verifyInput(newPlayer.playerArray);
-    $('#input').append(GREEN, '<br>');
-  });
 
-  $('#red').click(function(event) {
-    event.preventDefault();
-    flicker('red');
-    newPlayer.input(RED);
-    $('#input').append(RED, '<br>');
+    if (!gameover) {
+      // console.log(userInputs + " " + newGame.currentArray.length);
+      if (userInputs < newGame.currentArray.length) {
+        newPlayer.input(parseInt($(this).attr('number')));
+        // console.log(newGame.currentArray, newPlayer.playerArray);
+        // console.log(newGame.verifyInput(newPlayer.playerArray));
+        if (newGame.verifyInput(newPlayer.playerArray, userInputs)) {
+          userInputs++;
+        } else {
+          gameover = true;
+          console.log("You lost!");
+        }
+      }
+      if (!gameover && userInputs === newGame.currentArray.length) {
+        userInputs = 0;
+        newGame.step();
+        newPlayer.clearArray();
+        newSequence(newGame.currentArray);
+      }
+    }
   });
-
-  $('#yellow').click(function(event) {
-    event.preventDefault();
-    flicker('yellow');
-    newPlayer.input(YELLOW);
-    $('#input').append(YELLOW, '<br>');
-  });
-
-  $('#blue').click(function(event) {
-    event.preventDefault();
-    flicker('blue');
-    newPlayer.input(BLUE);
-    $('#input').append(BLUE, '<br>');
-  });
-
 });

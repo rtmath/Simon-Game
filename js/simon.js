@@ -12,19 +12,25 @@ Game.prototype.step = function(){
   this.currentArray.push(this.turnsArray[this.currentArray.length]);
 };
 
-Game.prototype.verifyInput = function(arrayToCheck){
-  var equal = (this.currentArray.length == arrayToCheck.length && this.currentArray.every(function(element, index) {
-    return element === arrayToCheck[index];
-  }));
-  if (equal && this.currentArray.length === this.turnsArray.length) {
-    console.log("You win!");
-  } else if (equal && this.currentArray.length < this.turnsArray.length) {
-    this.step();
-    console.log("Step");
-  } else {
-    console.log("You lose :(");
-  }
+Game.prototype.verifyInput = function(arrayToCheck, index){
+  return (this.currentArray[index] === arrayToCheck[index]);
+};
+
+Game.prototype.clearCurrentArray = function() {
+  this.currentArray.length = 0;
 }
+  // if (equal && this.currentArray.length === this.turnsArray.length){
+  //   return "won"
+  // } else if (equal && this.currentArray.length < this.turnsArray.length){
+  //   this.step();
+  //   return "step";
+  // } else if (this.currentArray.length < this.turnsArray.length) {
+  //   this.step();
+  // } else {
+  //   console.log(this.currentArray," ",arrayToCheck," ", equal)
+  //   return "lost"
+  // }
+
 
 function Player(){
   this.playerArray = [];
@@ -32,6 +38,9 @@ function Player(){
 
 Player.prototype.input = function(number){
   this.playerArray.push(number);
+};
+Player.prototype.clearArray = function(){
+  this.playerArray.length = 0;
 };
 
 
