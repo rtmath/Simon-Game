@@ -1,9 +1,10 @@
 var Game = require('./../js/simon.js').gameModule;
+var Player = require('./../js/simon.js').playerModule;
 
 function flicker(color) {
   $('#'+color).addClass('flicker');
   setTimeout(function(){
-    $('#'+color).removeClass('flicker')
+    $('#'+color).removeClass('flicker');
   },1000);
 }
 
@@ -25,9 +26,10 @@ $(document).ready(function(){
   const BLUE = 3;
 
   var newGame = new Game(10);
+  var newPlayer = new Player();
 
-  loop(newGame.turnsArray, function(index,elem){
-    switch (newGame.turnsArray[index]) {
+  loop(newGame.currentArray, function(index,elem){
+    switch (newGame.currentArray[index]) {
       case 0:
         flicker("green");
         break;
@@ -50,24 +52,29 @@ $(document).ready(function(){
   $('#green').click(function(event) {
     event.preventDefault();
     flicker("green");
+    newPlayer.input(GREEN);
+    newGame.verifyInput(newPlayer.playerArray);
     $('#input').append(GREEN, '<br>');
   });
 
   $('#red').click(function(event) {
     event.preventDefault();
     flicker('red');
+    newPlayer.input(RED);
     $('#input').append(RED, '<br>');
   });
 
   $('#yellow').click(function(event) {
     event.preventDefault();
     flicker('yellow');
+    newPlayer.input(YELLOW);
     $('#input').append(YELLOW, '<br>');
   });
 
   $('#blue').click(function(event) {
     event.preventDefault();
     flicker('blue');
+    newPlayer.input(BLUE);
     $('#input').append(BLUE, '<br>');
   });
 
