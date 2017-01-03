@@ -1,11 +1,79 @@
+body{
+  background-color: black;
+}
 .btn {
   height: 300px;
   width: 300px;
-  margin: 2px;
+  opacity: 1;
+  /*box-shadow: inset 0 0 30px black;*/
+  border: 1px solid black;
+  border-radius: 0 0 0 0;
 }
 
+#green {
+  height: 200px;
+  width: 150px;
+  transform: skewX(-35deg);
+  margin-right: 14%;
+  left: 12%;
+}
+
+#red {
+  height: 200px;
+  width: 150px;
+  transform: skewX(35deg);
+    left: 12%;
+}
+
+#blue {
+  height: 200px;
+  width: 150px;
+  transform: skewX(-35deg);
+    left: 12%;
+}
+
+#yellow {
+  height: 200px;
+  width: 150px;
+  transform: skewX(35deg);
+  margin-right: 14%;
+    left: 12%;
+}
+
+.btn-success {
+  /*background: radial-gradient(darkgreen, black);*/
+  border: 1px solid black;
+}
 .btn-success:hover {
-  background-color: #449d44 !important;
+  /*background: radial-gradient(darkgreen, black);*/
+  border: 1px solid black;
+}
+
+.btn-danger, .btn-danger:focus {
+  /*background: radial-gradient(darkred, black);*/
+  border: 1px solid black;
+}
+.btn-danger:hover {
+  /*background: radial-gradient(darkred, black);*/
+  border: 1px solid black;
+}
+
+.btn-primary {
+  /*background: radial-gradient(darkblue, black);*/
+  border: 1px solid black;
+}
+.btn-primary:hover {
+  /*background: radial-gradient(darkblue, black);*/
+  border: 1px solid black;
+}
+
+.btn-warning {
+  /*background: radial-gradient(goldenrod, black);*/
+  border: 1px solid black;
+}
+.btn-warning:hover {
+  /*background: radial-gradient(goldenrod, black);*/
+  border: 1px solid black;
 }
 
 .flicker {
@@ -17,6 +85,25 @@
     opacity:0.99;
   }
   32%{
-    opacity:0.4;
+    box-shadow: 0 0 30px #fff;
+    opacity:0.5;
   }
+}
+
+#winoutput{
+  text-align: center;
+  display: none;
+  color: white;
+}
+
+#loseoutput{
+  text-align: center;
+  color: white;
+  display: none;
+}
+.centerer{
+  position: absolute;
+top: 50%;
+left:50%;
+transform: translate(-50%,-50%);
 }

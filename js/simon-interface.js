@@ -5,11 +5,11 @@ function flicker(color) {
   $('#'+color).addClass('flicker');
   setTimeout(function(){
     $('#'+color).removeClass('flicker');
-  },1000);
+  },500);
 }
 
 function loop(arr, take, period) {
-    period = period || 1500;
+    period = period || 600;
     var i = 0;
     var interval = setInterval(function() {
         take(i, arr[i]);
@@ -36,9 +36,9 @@ function newSequence(currentArray){
         console.log("Error");
         break;
     }
-    $('#output').append(currentArray[index],'<br>');
+    // $('#output').append(currentArray[index],'<br>');
   });
-  $('#output').append("-------------",'<br>');
+  // $ ('#output').append("-------------",'<br>');
 }
 
 $(document).ready(function(){
@@ -60,17 +60,18 @@ $(document).ready(function(){
     event.preventDefault();
 
     if (!gameover) {
-      // console.log(userInputs + " " + newGame.currentArray.length);
       if (userInputs < newGame.currentArray.length) {
         newPlayer.input(parseInt($(this).attr('number')));
-        // console.log(newGame.currentArray, newPlayer.playerArray);
-        // console.log(newGame.verifyInput(newPlayer.playerArray));
         if (newGame.verifyInput(newPlayer.playerArray, userInputs)) {
           userInputs++;
         } else {
           gameover = true;
-          console.log("You lost!");
+          $('#loseoutput').show();
         }
+      }
+      if (!gameover && newPlayer.playerArray.length === newGame.turnsArray.length) {
+        gameover = true;
+        $('#winoutput').show();
       }
       if (!gameover && userInputs === newGame.currentArray.length) {
         userInputs = 0;

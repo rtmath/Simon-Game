@@ -10,29 +10,32 @@
     <title>Simon</title>
   </head>
   <body>
-    <div class="container">
-      <div class="well">
-        Simon
-      </div>
+    <div class="container centerer">
       <div class="row">
         <div class="col-xs-2">.</div>
-        <div id="green" number="0" class="col-xs-4 btn btn-success test">0</div>
-        <div id="red" number=1 class="col-xs-4 btn btn-danger">1</div>
+        <div id="green" number="0" class="col-xs-4 btn btn-success test"></div>
+        <div id="red" number=1 class="col-xs-4 btn btn-danger"></div>
         <div class="col-xs-2">.</div>
       </div>
       <div class="row">
         <div class="col-xs-2">.</div>
-        <div id="yellow" number=2 class="col-xs-4 btn btn-warning">2</div>
-        <div id="blue" number=3 class="col-xs-4 btn btn-primary">3</div>
+        <div id="yellow" number=2 class="col-xs-4 btn btn-warning"></div>
+        <div id="blue" number=3 class="col-xs-4 btn btn-primary"></div>
         <div class="col-xs-2">.</div>
       </div>
-      <div class="row well">
+      <div class="row output">
         <div class="col-xs-2">.</div>
-        <div class="col-xs-4" id="output">
-
+        <div class="col-xs-8" id="winoutput">
+          <h2>You won!</h2>
+          <a href="#NewGame" onclick="location.reload()">NewGame</a>
         </div>
-        <div class=" col-xs-4" id="input">
-
+        <div class="col-xs-2">.</div>
+      </div>
+      <div class="row output">
+        <div class="col-xs-2">.</div>
+        <div class="col-xs-8" id="loseoutput">
+          <h2>You lost!</h2>
+          <a href="#NewGame" onclick="location.reload()">NewGame</a>
         </div>
         <div class="col-xs-2">.</div>
       </div>

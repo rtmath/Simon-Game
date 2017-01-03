@@ -19,18 +19,6 @@ Game.prototype.verifyInput = function(arrayToCheck, index){
 Game.prototype.clearCurrentArray = function() {
   this.currentArray.length = 0;
 }
-  // if (equal && this.currentArray.length === this.turnsArray.length){
-  //   return "won"
-  // } else if (equal && this.currentArray.length < this.turnsArray.length){
-  //   this.step();
-  //   return "step";
-  // } else if (this.currentArray.length < this.turnsArray.length) {
-  //   this.step();
-  // } else {
-  //   console.log(this.currentArray," ",arrayToCheck," ", equal)
-  //   return "lost"
-  // }
-
 
 function Player(){
   this.playerArray = [];

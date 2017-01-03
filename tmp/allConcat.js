@@ -5,11 +5,11 @@ function flicker(color) {
   $('#'+color).addClass('flicker');
   setTimeout(function(){
     $('#'+color).removeClass('flicker');
-  },1000);
+  },500);
 }
 
 function loop(arr, take, period) {
-    period = period || 1500;
+    period = period || 600;
     var i = 0;
     var interval = setInterval(function() {
         take(i, arr[i]);
@@ -36,9 +36,9 @@ function newSequence(currentArray){
         console.log("Error");
         break;
     }
-    $('#output').append(currentArray[index],'<br>');
+    // $('#output').append(currentArray[index],'<br>');
   });
-  $('#output').append("-------------",'<br>');
+  // $ ('#output').append("-------------",'<br>');
 }
 
 $(document).ready(function(){
@@ -69,8 +69,12 @@ $(document).ready(function(){
           userInputs++;
         } else {
           gameover = true;
-          console.log("You lost!");
+          $('#loseoutput').show();
         }
+      }
+      if (!gameover && newPlayer.playerArray.length === newGame.turnsArray.length) {
+        gameover = true;
+        $('#winoutput').show();
       }
       if (!gameover && userInputs === newGame.currentArray.length) {
         userInputs = 0;
