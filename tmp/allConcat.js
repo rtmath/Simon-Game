@@ -16,20 +16,32 @@ function loop(arr, take, period) {
         if (++i >= arr.length) { clearInterval(interval);}
     }, period);
 }
+function playSound(){
+  var audioElement;
+  if(!audioElement) {
+    audioElement = document.createElement('audio');
+    audioElement.innerHTML = '<source src="' + 'audio.wav'+ '" type="audio/mpeg" />'
+  }
+  audioElement.play();
+}
 
 function newSequence(currentArray){
   loop(currentArray, function(index,elem){
     switch (currentArray[index]) {
       case 0:
         flicker("green");
+        playSound();
         break;
       case 1:
+        playSound();
         flicker("red");
         break;
       case 2:
+        playSound();
         flicker("yellow");
         break;
       case 3:
+        playSound();
         flicker("blue");
         break;
       default:
@@ -58,13 +70,11 @@ $(document).ready(function(){
 
   $('.btn').click(function(event) {
     event.preventDefault();
+    playSound();
 
     if (!gameover) {
-      // console.log(userInputs + " " + newGame.currentArray.length);
       if (userInputs < newGame.currentArray.length) {
         newPlayer.input(parseInt($(this).attr('number')));
-        // console.log(newGame.currentArray, newPlayer.playerArray);
-        // console.log(newGame.verifyInput(newPlayer.playerArray));
         if (newGame.verifyInput(newPlayer.playerArray, userInputs)) {
           userInputs++;
         } else {
